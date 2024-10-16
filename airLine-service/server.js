@@ -55,7 +55,7 @@ app.post('/airlines',async(req,res)=>{
 }
 });
 
-app.get('/airline/:airLineId/flights', async(req,res)=>{
+app.get('/airlines/:airLineId/flights', async(req,res)=>{
     const airLineId = req.params.airLineId;
     try{
         const airLine = await Airlines.findOne({airLineId :airLineId});

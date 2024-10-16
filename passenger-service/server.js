@@ -28,8 +28,8 @@ app.get('/passengers' , async(req,res)=>{
     }
 });
 
-app.get('/:passengerId',async(req,res)=>{
-    const {passengerId} =req.params;
+app.get('/passengers/:passengerId',async(req,res)=>{
+    const {passengerId} =req.params.passengerId;
     try{
         const passenger = await Passengers.find({passengerId : passengerId});
         if(passenger){
