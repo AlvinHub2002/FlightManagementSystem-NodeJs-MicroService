@@ -7,7 +7,7 @@ const PORT = 3003;
 
 app.use(express.json())
 
-mongoose.connect('mongodb://0.0.0.0:27017/passengerdb')
+mongoose.connect('mongodb://mongodb:27017/passengerdb')
 .then(()=>{console.log("MongoDB connected")})
 .catch((err)=>{console.log(err)})
 

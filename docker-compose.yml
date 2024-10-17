@@ -1,0 +1,37 @@
+version: '3'
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3000:3000"
+    image: api-gateway
+    depends_on:
+      - airLine-service
+      - flight-service
+      - passenger-service
+
+  airLine-service:
+    build: ./airLine-service
+    image: airline-service
+    depends_on:
+      - mongodb
+
+  flight-service:
+    build: ./flight-service
+    image: flight-service
+    depends_on:
+      - mongodb
+
+  passenger-service:
+    build: ./passenger-service
+    image: passenger-service
+    depends_on:
+      - mongodb
+
+  mongodb:
+    image: mongo:4
+    volumes:
+      - mongodb-data:/data/db
+
+volumes:
+  mongodb-data:

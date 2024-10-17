@@ -7,7 +7,7 @@ const PORT = 3001;
 
 app.use(express.json())
 
-mongoose.connect('mongodb://0.0.0.0:27017/airlinesdb')
+mongoose.connect('mongodb://mongodb:27017/airlinesdb')
 .then(()=>{console.log("MongoDB connected ")})
 .catch((err)=>{console.log(err)});
 
@@ -59,7 +59,7 @@ app.get('/airlines/:airLineId/flights', async(req,res)=>{
     const airLineId = req.params.airLineId;
     try{
         const airLine = await Airlines.findOne({airLineId :airLineId});
-        const response = await axios.get(`http://localhost:3002/flights/airline/${airLineId}`);
+        const response = await axios.get(`http://flight-service:3002/flights/airline/${airLineId}`);
         const flights = response.data;
         res.json({airLine,flights});
     }
